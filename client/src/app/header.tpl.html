@@ -1,0 +1,39 @@
+<!-- Header -->
+<header class="clearfix" ng-controller="HeaderCtrl">
+    <a href="/#/exposition/" class="logo"><img src="/img/logo.png" alt=""></a>
+    
+    <div class="language-select">
+        <a href="#" class="active">RU</a> / <a href="#">ENG</a>
+    </div>
+    
+    <div class="user" ng-show="currentUser && currentUser.name">
+        <a class="name" href="/#/user/me/">{{currentUser.name}}</a> <a href="#" class="question">?</a>
+    </div>
+    
+    <nav id="main-nav">
+        <div class="clearfix">
+            <a ng-show="currentUser && hasRole(5)" href="/#/users/all/">Пользователи</a>
+            <a ng-show="currentUser && currentUser.name" href="/#/exposition/">Мероприятия</a>
+            <a ng-show="currentUser && hasRole(2)" href="/#/offer/">Мои предложения</a>
+            <a ng-show="currentUser && hasRole(2)" href="/#/cart/">Мои заказы <span class="light-blue-color">({{currentUser.cartAmount || 0}})</span></a>
+            <a ng-show="currentUser && hasRole(1)" href="/#/exposition/my/">Мои выставки</a>
+            <a ng-show="currentUser && hasRole(1)" href="/#/cart/approve/">Мои заказы <span class="light-blue-color">({{currentUser.cartAmount || 0}})</span></a>
+            <a ng-hide="currentUser && currentUser.name" href="/#/auth/">Войти</a>
+            <a ng-hide="currentUser && currentUser.name" href="/#/auth/signup/">Зарегистрироваться</a>
+            <a ng-show="currentUser && currentUser.name" ng-click="logout()" href="">Выйти</a>
+        </div>
+    </nav>
+
+    <div id="mobile-nav">
+        <div class="show_elements_button"></div>
+        <div class="hidden-menu">
+            <a ng-show="currentUser && hasRole(5)" href="/#/users/all/">Пользователи</a>
+            <a ng-show="currentUser && hasRole(2)" href="/#/offer/">Мои предложения <span class="light-blue-color">(2)</span></a>
+            <a ng-show="currentUser && hasRole(2)" href="/#/cart/">Моя корзина</a>
+            <a ng-show="currentUser && hasRole(1)" href="/#/cart/approve/">Мои предложения для подтверждения</a>
+            <a ng-hide="currentUser && currentUser.name" href="/#/auth/">Войти</a>
+            <a ng-hide="currentUser && currentUser.name" href="/#/auth/signup/">Зарегистрироваться</a>
+            <a ng-show="currentUser && currentUser.name" ng-click="logout()" href="">Выйти</a>
+        </div>
+    </div>
+</header>
